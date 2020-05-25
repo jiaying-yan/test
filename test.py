@@ -1,4 +1,5 @@
-num_list = []
-while True:
-    num = 'notebook' * 100
-    num_list.append(num)
+import time
+
+print(time.ctime())
+time.sleep(60 * 2)
+print(time.ctime())
