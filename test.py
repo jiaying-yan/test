@@ -1,7 +1,5 @@
-import random
+import time
 
-def random_num():
-    r = random.choices([1,2])
-    return int(r[0])
-  
-random_num()
+print(time.ctime())
+time.sleep(4800)
+print(time.ctime())
