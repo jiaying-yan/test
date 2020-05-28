@@ -1,1 +1,2 @@
-exi(-1)
+print('hello')
+exit(-1)
