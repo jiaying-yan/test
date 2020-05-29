@@ -1,5 +1,5 @@
 import time
 
 print(time.ctime())
-time.sleep(10)
+time.sleep(31)
 print(time.ctime())
