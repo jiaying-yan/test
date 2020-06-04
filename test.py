@@ -1,5 +1,5 @@
 import time
 
 print(time.ctime())
-time.sleep(5)
+time.sleep(4800)
 print(time.ctime())
