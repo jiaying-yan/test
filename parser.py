@@ -6,7 +6,7 @@ from pathlib import Path
 def main(args):
     parser = argparse.ArgumentParser(description='Return a list')
     parser.add_argument("--hiverslt", type=list, required=True)
-    parser.add_argument("--listrslt", type=list, required=True)
+    parser.add_argument("--listrslt", type=list)
     args = parser.parse_args(args)
 
     Path(args.listrslt).parent.mkdir(parents=True, exist_ok=True)
