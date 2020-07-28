@@ -4,20 +4,17 @@ from pathlib import Path
 
 
 def main(args):
-    parser = argparse.ArgumentParser(description='Returns sum/minus of two arguments')
-    parser.add_argument("--arg1", type=float, required=True)
-    parser.add_argument("--arg2", type=float, required=True)
-    parser.add_argument("--sum", type=str, required=True)
-    parser.add_argument("--minus", type=str, required=True)
+    parser = argparse.ArgumentParser(description='Return a list')
+    parser.add_argument("--hiverslt", type=list, required=True)
+    parser.add_argument("--listrslt", type=list, required=True)
     args = parser.parse_args(args)
 
-    Path(args.sum).parent.mkdir(parents=True, exist_ok=True)
-    with open(args.sum, 'w') as sum_path:
-        sum_path.write('{}'.format(args.arg1 + args.arg2))
-        
-    Path(args.minus).parent.mkdir(parents=True, exist_ok=True)
-    with open(args.minus, 'w') as minus_path:
-        minus_path.write('{}'.format(args.arg1 - args.arg2))
+    Path(args.listrslt).parent.mkdir(parents=True, exist_ok=True)
+    with open(args.listrslt, 'w') as sum_path:
+        output_string1 = args.arg1[1][0][0]
+        output_string2 = args.arg1[1][1][0]
+        outputrlst = [output_string1, output_string2]
+        sum_path.write('{}'.format(outputrlst))
 
 
 if __name__ == '__main__':
