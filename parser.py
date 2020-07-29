@@ -1,21 +1,38 @@
+# --*-- coding:utf-8 --*--
+# Time: 2020/7/28 15:58
+# Author: chuanman.yu
+# Email: 1165358716@qq.com
+# File: test.py
+# Software: PyCharm
+
 import argparse
 import sys
+import json
 from pathlib import Path
 
 
-def main(args):
-    parser = argparse.ArgumentParser(description='Return a list')
-    parser.add_argument("--hiverslt", type=list, required=True)
-    parser.add_argument("--listrslt", type=list)
-    args = parser.parse_args(args)
+def flat(list_data):
+    result = []
+    for i in list_data:
+        if isinstance(i, list):
+            result.extend(flat(i))
+        else:
+            result.append(i)
+    return result
 
-    Path(args.listrslt).parent.mkdir(parents=True, exist_ok=True)
-    with open(args.listrslt, 'w') as sum_path:
-        output_string1 = args.arg1[1][0][0]
-        output_string2 = args.arg1[1][1][0]
-        outputrlst = [output_string1, output_string2]
-        sum_path.write('{}'.format(outputrlst))
+
+def test_list(args):
+    parser = argparse.ArgumentParser(description='Returns hive list for python')
+    parser.add_argument("--input", type=str, required=True)
+    parser.add_argument("--output", type=str, required=True)
+    args = parser.parse_args(args)
+    input_data = json.loads(args.input)
+    result = flat(input_data)
+    Path(args.output).parent.mkdir(parents=True, exist_ok=True)
+    with open(args.output, 'w') as output_path:
+        output_path.write('{}'.format(result))
 
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
+
+    test_list(sys.argv[1:])
