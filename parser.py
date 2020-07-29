@@ -30,7 +30,7 @@ def test_list(args):
     result = flat(input_data)
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
     with open(args.output, 'w') as output_path:
-        output_path.write('{}'.format(result))
+        output_path.write('{}'.format(str(result).replace("'", '"')))
 
 
 if __name__ == '__main__':
