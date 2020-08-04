@@ -9,7 +9,7 @@ def test_list(args):
     # parser.add_argument("--input", type=str, required=True)
     parser.add_argument("--output", type=str, required=True)
     args = parser.parse_args(args)
-    input_data = json.loads([1, 2])
+    input_data = json.loads("[1, 2]")
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
     with open(args.output, 'w') as output_path:
         output_path.write('{}'.format(json.dumps(input_data)))
