@@ -10,7 +10,7 @@ def test_list(args):
     parser.add_argument("--output", type=str, required=True)
     args = parser.parse_args(args)
     list = []
-    for i in range(0,str(args.a)):
+    for i in range(0,int(args.a)):
         list.append(i)
     result = str(list)
     input_data = json.loads(result)
