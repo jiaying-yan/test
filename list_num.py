@@ -12,7 +12,7 @@ def test_list(args):
     result = []
     for i in range(0,1):
       result.append(i)
-    result_data = json.loads(reuslt)
+    result_data = json.loads(str(reuslt))
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
     with open(args.output, 'w') as output_path:
         output_path.write('{}'.format(json.dumps(result_data))
