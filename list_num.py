@@ -12,9 +12,10 @@ def test_list(args):
     result = []
     for i in range(0,num):
       result.append(i)
+    result_data = json.loads(reuslt)
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
     with open(args.output, 'w') as output_path:
-        output_path.write('{}'.format(json.dumps(result))
+        output_path.write('{}'.format(json.dumps(result_data))
 
 
 if __name__ == '__main__':
