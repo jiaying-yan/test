@@ -6,11 +6,11 @@ from pathlib import Path
 
 def test_list(args):
     parser = argparse.ArgumentParser(description='Returns list for python')
-    parser.add_argument("--input", type=str, required=True)
+    parser.add_argument("--input", type=int, required=True)
     parser.add_argument("--output", type=str, required=True)
     args = parser.parse_args(args)
     list = []
-    for i in range(0,int(args.a)):
+    for i in range(0,args.a):
         list.append(i)
     result = str(list)
     input_data = json.loads(result)
