@@ -34,7 +34,7 @@ def main(args):
     parser = argparse.ArgumentParser(description='Returns sum of two arguments')
     parser.add_argument("--env", type=str, required=True)
     parser.add_argument("--file", type=str, required=True)
-    # parser.add_argument("--env_output", type=str, required=True)
+    parser.add_argument("--env_output", type=str, required=True)
     args = parser.parse_args(args)
     env = args.env
     csv_url = args.file
@@ -86,9 +86,9 @@ def main(args):
             # please refer to the doc for more information:
             # https://mlflow.org/docs/latest/model-registry.html#api-workflow
             mlflow.sklearn.log_model(lr, "model", registered_model_name="ElasticnetWineModel")
-            # env_output = args.env_output
-            # Path(env_output).parent.mkdir(parents=True, exist_ok=True)
-            # Path(env_output).write_text(env)
+            env_output = args.env_output
+            Path(env_output).parent.mkdir(parents=True, exist_ok=True)
+            Path(env_output).write_text(env)
         else:
             mlflow.sklearn.log_model(lr, "model")
 
