@@ -1,7 +1,3 @@
-# The data set used in this example is from http://archive.ics.uci.edu/ml/datasets/Wine+Quality
-# P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
-# Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
-
 import os
 import warnings
 import sys
@@ -30,8 +26,7 @@ def eval_metrics(actual, pred):
     return rmse, mae, r2
 
 
-
-if __name__ == "__main__":
+def main(args):
     warnings.filterwarnings("ignore")
     np.random.seed(40)
 
@@ -60,8 +55,8 @@ if __name__ == "__main__":
     train_y = train[["quality"]]
     test_y = test[["quality"]]
 
-    alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.5
-    l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
+    alpha = 0.5
+    l1_ratio =  0.5
 
     with mlflow.start_run():
         lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
@@ -97,3 +92,7 @@ if __name__ == "__main__":
             # Path(env_output).write_text(env)
         else:
             mlflow.sklearn.log_model(lr, "model")
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
