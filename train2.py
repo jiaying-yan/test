@@ -41,6 +41,7 @@ if __name__ == "__main__":
     parser.add_argument("--file", type=file, required=True)
     parser.add_argument("--env_output", type=str, required=True)
     args = parser.parse_args(args)
+    env = args.env
     csv_url = args.file
     try:
         data = pd.read_csv(csv_url, sep=';')
