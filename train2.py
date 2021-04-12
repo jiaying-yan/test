@@ -42,7 +42,9 @@ if __name__ == "__main__":
     # parser.add_argument("--env_output", type=str, required=True)
     args = parser.parse_args(args)
     env = args.env
-    csv_url = args.file
+    # csv_url = args.file
+    csv_url =\
+        'http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv'
     try:
         data = pd.read_csv(csv_url, sep=';')
     except Exception as e:
